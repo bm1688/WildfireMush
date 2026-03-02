@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class VisualTimer : MonoBehaviour
 {
     [SerializeField] private Slider timeSlider;
-    [SerializeField] private Timer timerScript;
+    [SerializeField] private Timer timerObject;
 
     private void Start()
     {
-        timeSlider.maxValue = timerScript.TimerDuration;
+        timeSlider.maxValue = timerObject.TimerDuration;
     }
 
     private void Update()
     {
-        timeSlider.value = timerScript.currentTime;
+        timeSlider.value = timerObject.currentTime;
 
     }
 
