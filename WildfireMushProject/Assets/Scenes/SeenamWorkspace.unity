@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeSlider: {fileID: 1911135783}
-  timerScript: {fileID: 2006792398}
+  timerObject: {fileID: 2006792398}
 --- !u!4 &300176183
 Transform:
   m_ObjectHideFlags: 0
