@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FireDamageScript : MonoBehaviour
 {
-    [SerializeField] GameObject _fire;
-    [SerializeField] Collider2D _collider;
-    [SerializeField] int _damage;
+    [SerializeField] private GameObject _fire;
+    [SerializeField] private Collider2D _collider;
+    [SerializeField] private int _damage;
 
     // Update is called once per frame
     void Update()
