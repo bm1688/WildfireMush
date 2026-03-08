@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
         moveX = Input.GetAxisRaw("Horizontal");
         moveY = Input.GetAxisRaw("Vertical");
 
-        _rb.velocity = new Vector2(moveX * _speed, moveY * _speed);
+        Vector2 movement = new Vector2(moveX, moveY).normalized;
+
+        _rb.velocity = movement* _speed ;
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4535722818834810747}
   - component: {fileID: 3608179026576796859}
   - component: {fileID: 2295744662329031646}
+  - component: {fileID: 8344569654215246787}
   m_Layer: 0
   m_Name: FlameTest
   m_TagString: Untagged
@@ -164,3 +165,20 @@ MonoBehaviour:
   _fire: {fileID: 7147725031990606460}
   _collider: {fileID: 3608179026576796859}
   _damage: 10
+--- !u!114 &8344569654215246787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7147725031990606460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695421c659018d469c15abd2e0ac957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firePrefab: {fileID: 7147725031990606460}
+  _fireRange: 5
+  _distance: 0
+  _startPos: {x: 0, y: 0}
+  _endPos: {x: 0, y: 0}

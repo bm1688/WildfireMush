@@ -183,6 +183,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 2466899572842990953}
   _cam: {fileID: 6812917262197213629}
+  _shooting: 0
+  _time: 0
+  _firerate: 10
+  _nextTimeToShoot: 0
   _mousePos: {x: 0, y: 0}
   _lookDir: {x: 0, y: 0}
   _firePoint: {fileID: 6980567915487537154}

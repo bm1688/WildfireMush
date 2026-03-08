@@ -5,7 +5,14 @@ using UnityEngine;
 public class PlayerAimAndShoot : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rb;
+
     [SerializeField] private Camera _cam;
+
+    [SerializeField] private bool _shooting;
+
+    [SerializeField] private float _time;
+    [SerializeField] private float _firerate;
+    [SerializeField] private float _nextTimeToShoot;
 
     [SerializeField] private Vector2 _mousePos;
     [SerializeField] private Vector2 _lookDir;
@@ -27,17 +34,39 @@ public class PlayerAimAndShoot : MonoBehaviour
     void Update()
     {
         
+
         _mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
 
         _lookDir = _mousePos - _rb.position;
         float angle = Mathf.Atan2(_lookDir.y, _lookDir.x) * Mathf.Rad2Deg - 90f;
         _firePoint.eulerAngles = new Vector3(0,0,angle);
 
+        _time += Time.deltaTime;
+
+
+        if (_time > 1 / _firerate && _shooting)
+        {
+
+            Fire();
+            _time = 0;
+
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
-            Fire();
+            _shooting = true;
+            
         }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            _shooting = false;
+        }
+
+        
+        
+        
+        
 
     }
 
