@@ -29,10 +29,10 @@ public class RandomPattern : MonoBehaviour
             velocity = Vector3.Reflect(velocity, collision.contacts[0].normal);
             velocity += new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);
         }
-        else if (collision.gameObject.GetComponent<PlayerMovement>())
+        else if (collision.gameObject.GetComponent<SimpleTest>())
         {
-            Debug.Log("Game Over");
-            Time.timeScale = 0f;
+            Debug.Log("Game Over by random");
+            //Time.timeScale = 0f;
         }
     }
 }
