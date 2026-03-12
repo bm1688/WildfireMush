@@ -17,8 +17,15 @@ public class BurnableTree : MonoBehaviour, IDamageable
     [SerializeField] private GameObject mushroomPrefab;
     [SerializeField] private float spawnDelay = 5f;
 
+    [Header("Smoke Zone")]
+    [SerializeField] private SmokeZoneScaler smokeZoneScaler;
+
+    [Header("Burning Kill")]
+    [SerializeField] private bool killPlayerOnTouchWhileBurning = true;
+
     private float hp;
     private bool isDead;
+    private bool isBurning;
     private Color originalColor;
     private Coroutine spawnRoutine;
     private Collider2D treeCollider;
@@ -33,6 +40,9 @@ public class BurnableTree : MonoBehaviour, IDamageable
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         originalColor = spriteRenderer.color;
+
+        if (smokeZoneScaler != null)
+            smokeZoneScaler.gameObject.SetActive(false);
     }
 
     public void ApplyDamage(float damage)
@@ -42,10 +52,18 @@ public class BurnableTree : MonoBehaviour, IDamageable
         hp -= damage;
         if (hp < 0f) hp = 0f;
 
-        if (hp <= damagedThreshold)
+        if (hp <= damagedThreshold && !isBurning)
+        {
+            isBurning = true;
             spriteRenderer.color = damagedColor;
-        else
+
+            if (smokeZoneScaler != null)
+                smokeZoneScaler.StartExpand();
+        }
+        else if (!isBurning)
+        {
             spriteRenderer.color = originalColor;
+        }
 
         if (hp <= 0f)
         {
@@ -56,13 +74,16 @@ public class BurnableTree : MonoBehaviour, IDamageable
     private void BecomeAsh()
     {
         isDead = true;
+        isBurning = false;
 
         spriteRenderer.sprite = ashSprite;
-
         spriteRenderer.color = Color.white;
 
         if (treeCollider != null)
             treeCollider.enabled = false;
+
+        if (smokeZoneScaler != null)
+            smokeZoneScaler.StartShrink();
 
         if (spawnRoutine != null)
             StopCoroutine(spawnRoutine);
@@ -78,5 +99,29 @@ public class BurnableTree : MonoBehaviour, IDamageable
             Instantiate(mushroomPrefab, transform.position, Quaternion.identity);
 
         gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        HandlePlayerTouch(other);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        HandlePlayerTouch(collision.collider);
+    }
+
+    private void HandlePlayerTouch(Collider2D other)
+    {
+        if (!killPlayerOnTouchWhileBurning) return;
+        if (!isBurning) return;
+
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player died: touched burning tree!");
+
+            // PlayerHealth / PlayerController
+            // other.GetComponent<PlayerHealth>()?.Die();
+        }
     }
 }
