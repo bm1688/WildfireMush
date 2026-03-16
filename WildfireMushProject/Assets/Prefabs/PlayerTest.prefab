@@ -527,6 +527,9 @@ MonoBehaviour:
   _fire: {fileID: 1411501950543144124}
   _collider: {fileID: 3402558415923331270}
   _damage: 1
+  _damagePerSecond: 10
+  _timeSinceLastDamage: 0
+  _damageInterval: 1
   hit: 0
 --- !u!70 &3402558415923331270 stripped
 CapsuleCollider2D:

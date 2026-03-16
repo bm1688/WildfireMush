@@ -254,14 +254,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerTest
       objectReference: {fileID: 0}
-    - target: {fileID: 2499031276137314939, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
-      propertyPath: _damageInterval
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2499031276137314939, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
-      propertyPath: _damagePerSecond
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4647875821797350234, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.57614267
