@@ -29,7 +29,7 @@ public class FireDamageScript : MonoBehaviour
         
        
         
-        if (tree != null)
+        if (hit && tree != null)
         {
             Debug.Log("detected");
             if (_timeSinceLastDamage >= _damageInterval)
