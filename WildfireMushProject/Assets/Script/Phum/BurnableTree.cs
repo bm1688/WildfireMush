@@ -2,10 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-<<<<<<< Updated upstream
-//using scen
-=======
->>>>>>> Stashed changes
 
 public class BurnableTree : MonoBehaviour, IDamageable
 {
