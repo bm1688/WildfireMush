@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerO2 : MonoBehaviour
 {
@@ -35,7 +36,11 @@ public class PlayerO2 : MonoBehaviour
         }
 
         if (currentO2 > maxO2) currentO2 = maxO2;
-        if (currentO2 < 0) currentO2 = 0;
+        if (currentO2 < 0)
+        {
+            Debug.Log("Player died! Loading GameOver scene");
+            SceneManager.LoadScene("GameOver");
+        }
 
         oxygen.SetO2(currentO2);
     }

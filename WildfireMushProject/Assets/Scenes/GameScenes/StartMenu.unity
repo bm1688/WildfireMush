@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c860eeacfbaad459931b2b6d77781d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneName: HowToPlay
 --- !u!4 &1384768387
 Transform:
   m_ObjectHideFlags: 0

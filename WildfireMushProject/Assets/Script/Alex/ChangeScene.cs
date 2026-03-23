@@ -6,14 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    [SerializeField] public string _sceneName;
     public void NextScene()
     {
-        Debug.Log("Loaded scene 2");
-        SceneManager.LoadScene(2);
+        Debug.Log($"Loaded {_sceneName} scene");
+        SceneManager.LoadScene(_sceneName);
     }
     public void ExitGame()
     {
         Debug.Log("Quit Game");
         Application.Quit();
     }
+    //public void GameOver()
+    //{
+    //    Debug.Log("Player died! Loading GameOver scene");
+    //    SceneManager.LoadScene("GameOver");
+    //}
 }
