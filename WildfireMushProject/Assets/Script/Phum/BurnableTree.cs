@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+//using scen
 
 public class BurnableTree : MonoBehaviour, IDamageable
 {
@@ -118,7 +120,7 @@ public class BurnableTree : MonoBehaviour, IDamageable
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player died: touched burning tree!");
+            SceneManager.LoadScene("GameOver");
 
             // PlayerHealth / PlayerController
             // other.GetComponent<PlayerHealth>()?.Die();
