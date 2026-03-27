@@ -5,13 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "FuelTankSO", menuName = "Scriptable Objects/FuelTankSO")]
 public class FuelTankSO : ScriptableObject
 {
-    [SerializeField] private float _fuelMaxCapacity;
-    [SerializeField] private float _fuelCurrentCapacity;
-    [SerializeField] private float _fuelDecreaseRate;
+    [Header("ID / Name")]
+    public string id = "fuel_01";
+    public string displayName = "Fuel Tank 01";
 
-    public void FuelDecrease()
-    {
-
-    }
-
+    [Header("Stats")]
+    public float maxFuel = 100f;
+    public float drainRate = 10f;
 }

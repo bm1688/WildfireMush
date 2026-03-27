@@ -73,4 +73,18 @@ public class PlayerO2 : MonoBehaviour
             inSmoke = false;
         }
     }
+    public void ApplyO2Tank(O2TankSO tank, bool refill = true)
+    {
+        if (tank == null) return;
+
+        maxO2 = tank.maxO2;
+        regenRate = tank.regenRate;
+        decreaseRate = tank.decreaseRate;
+
+        if (refill)
+            currentO2 = maxO2;
+
+        oxygen.SetMaxO2(maxO2);
+        oxygen.SetO2(currentO2);
+    }
 }

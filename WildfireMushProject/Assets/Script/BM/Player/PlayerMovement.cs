@@ -24,4 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
         _rb.velocity = movement* _speed ;
     }
+    public void SetSpeed(float newSpeed)
+    {
+        _speed = newSpeed;
+    }
 }
