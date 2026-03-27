@@ -15,9 +15,21 @@ public class LoadoutManager : MonoBehaviour
     [SerializeField] private FuelTankSO currentFuelTank;
     [SerializeField] private ShoeSO currentShoe;
 
+    private static LoadoutManager instance;
+    public static LoadoutManager Instance => instance;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         if (currentO2Tank == null) currentO2Tank = defaultO2Tank;
         if (currentFuelTank == null) currentFuelTank = defaultFuelTank;
@@ -75,5 +87,10 @@ public class LoadoutManager : MonoBehaviour
         PlayerMovement move = playerObj.GetComponent<PlayerMovement>();
         if (move != null && currentShoe != null)
             move.SetSpeed(currentShoe.moveSpeed);
+    }
+
+    public FuelTankSO GetCurrentLoadout()
+    {
+        return currentFuelTank;
     }
 }
