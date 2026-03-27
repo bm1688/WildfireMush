@@ -13,6 +13,7 @@ public class PlayerO2 : MonoBehaviour
     [Header("Rates")]
     [SerializeField] private float decreaseRate = 10f;
     [SerializeField] private float regenRate = 27f;
+    [SerializeField] private GameOver GameOverScript;
 
     private bool inSmoke = false;
 
@@ -38,8 +39,11 @@ public class PlayerO2 : MonoBehaviour
         if (currentO2 > maxO2) currentO2 = maxO2;
         if (currentO2 < 0)
         {
-            Debug.Log("Player died! Loading GameOver scene");
-            SceneManager.LoadScene("GameOver");
+            Debug.Log("Player died from lack of oxygen! Loading GameOver screen");
+            GameOverScript.GameOverScreen();
+            //SceneManager.LoadScene("GameOver");
+            //Time.timeScale = 0;
+            //Panel.SetActive(true);
         }
 
         oxygen.SetO2(currentO2);

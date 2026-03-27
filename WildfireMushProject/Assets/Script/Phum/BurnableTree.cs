@@ -33,6 +33,7 @@ public class BurnableTree : MonoBehaviour, IDamageable
     private Color originalColor;
     private Coroutine spawnRoutine;
     private Collider2D treeCollider;
+    [SerializeField] private GameOver GameOverScript;
 
     private void Awake()
     {
@@ -144,7 +145,8 @@ public class BurnableTree : MonoBehaviour, IDamageable
 
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("GameOver");
+            Debug.Log("Player died from touching a burning tree! Loading GameOver screen");
+            GameOverScript.GameOverScreen();
         }
     }
 }
