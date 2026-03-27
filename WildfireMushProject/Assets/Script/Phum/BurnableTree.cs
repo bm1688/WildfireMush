@@ -9,6 +9,9 @@ public class BurnableTree : MonoBehaviour, IDamageable
     [SerializeField] private float maxHP = 100f;
     [SerializeField] private float damagedThreshold = 70f;
 
+    [Header("Burn Damage Over Time")]
+    [SerializeField] private float burnDamagePerSecond = 10f;
+
     [Header("Visual")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite ashSprite;
@@ -46,6 +49,21 @@ public class BurnableTree : MonoBehaviour, IDamageable
             smokeZoneScaler.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (isDead) return;
+        if (!isBurning) return;
+
+        hp -= burnDamagePerSecond * Time.deltaTime;
+
+        if (hp < 0f) hp = 0f;
+
+        if (hp <= 0f)
+        {
+            BecomeAsh();
+        }
+    }
+
     public void ApplyDamage(float damage)
     {
         if (isDead) return;
@@ -55,11 +73,7 @@ public class BurnableTree : MonoBehaviour, IDamageable
 
         if (hp <= damagedThreshold && !isBurning)
         {
-            isBurning = true;
-            spriteRenderer.color = damagedColor;
-
-            if (smokeZoneScaler != null)
-                smokeZoneScaler.StartExpand();
+            StartBurning();
         }
         else if (!isBurning)
         {
@@ -72,8 +86,19 @@ public class BurnableTree : MonoBehaviour, IDamageable
         }
     }
 
+    private void StartBurning()
+    {
+        isBurning = true;
+        spriteRenderer.color = damagedColor;
+
+        if (smokeZoneScaler != null)
+            smokeZoneScaler.StartExpand();
+    }
+
     private void BecomeAsh()
     {
+        if (isDead) return;
+
         isDead = true;
         isBurning = false;
 
