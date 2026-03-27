@@ -15,5 +15,5 @@ MonoBehaviour:
   id: o2_01
   displayName: O2 Tank 01
   maxO2: 100
-  regenRate: 27
+  regenRate: 22
   decreaseRate: 10
