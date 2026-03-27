@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 2466899572842990953}
   - component: {fileID: 6485107523756373821}
   - component: {fileID: 2902885330754960241}
+  - component: {fileID: 8230806904867916539}
+  - component: {fileID: 4595155219004305933}
+  - component: {fileID: 7751961881583838233}
   m_Layer: 0
   m_Name: PlayerTest
   m_TagString: Player
@@ -195,6 +198,52 @@ MonoBehaviour:
   _player: {fileID: 1128065311999874828}
   _firePrefab: {fileID: 1411501950543144124}
   _shootForce: 10
+--- !u!114 &8230806904867916539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128065311999874828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f30a7c7ee522943aab757088a970fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentO2: 100
+  maxO2: 100
+  oxygen: {fileID: 0}
+  decreaseRate: 10
+  regenRate: 27
+  GameOverScript: {fileID: 0}
+--- !u!114 &4595155219004305933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128065311999874828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c860eeacfbaad459931b2b6d77781d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: 
+--- !u!114 &7751961881583838233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128065311999874828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64534429331ea9e4aa85ded65a877148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFuel: 100
+  maxFuel: 100
+  drainRate: 10
 --- !u!1 &2404031291537675001
 GameObject:
   m_ObjectHideFlags: 0
