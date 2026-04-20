@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
 {
+    [SerializeField] private LoadoutManager _loadoutManager;
+    [SerializeField] private 
     // Start is called before the first frame update
     void Start()
     {

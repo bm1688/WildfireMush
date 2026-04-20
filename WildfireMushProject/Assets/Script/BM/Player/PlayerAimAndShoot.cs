@@ -23,12 +23,15 @@ public class PlayerAimAndShoot : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _firePrefab;
 
+    [SerializeField] private PlayerFuel _playerFuel;
+
     [SerializeField] private float _shootForce;
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-
+        _playerFuel = GetComponent<PlayerFuel>();
+        
     }
 
     // Update is called once per frame
@@ -48,32 +51,35 @@ public class PlayerAimAndShoot : MonoBehaviour
 
         _time += Time.deltaTime;
 
+        
+        
 
-        /*if (_time > 1 / _firerate && _shooting)
+        if (Input.GetMouseButtonDown(0) && _playerFuel.currentFuel > 0)
         {
-
-            Fire(_shooting);
-            _time = 0;
-
-        }*/
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            //_shooting = true;
+            _shooting = true;
             _firePrefab.SetActive(true);
             
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            //_shooting = false;
+            _shooting = false;
             _firePrefab.SetActive(false);
         }
 
-        
-        
-        
-        
+        if (_time > 1 / _firerate && _shooting)
+        {
+
+            _playerFuel.ConsumeFuel(1);
+            _time = 0;
+
+        }
+
+        if (_playerFuel.currentFuel <= 0)
+        {
+            _firePrefab.SetActive(false);
+        }
+
 
     }
 
