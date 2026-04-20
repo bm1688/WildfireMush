@@ -5,7 +5,9 @@ using UnityEngine;
 public class SaveSystem : MonoBehaviour
 {
     [SerializeField] private LoadoutManager _loadoutManager;
-    [SerializeField] private 
+    [SerializeField] private O2TankSO _o2TankSO;
+    [SerializeField] private FuelTankSO _fuelTankSO;
+    [SerializeField] private ShoeSO _shoeSO;
     // Start is called before the first frame update
     void Start()
     {

@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Start()
     {
-        //PlayMusic("background theme song");
+        PlayMusic("bgm");
     }
 
     public void PlayMusic(string name)
