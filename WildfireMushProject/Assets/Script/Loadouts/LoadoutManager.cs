@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LoadoutManager : MonoBehaviour
 {
+    public static LoadoutManager Instance { get; private set; }
+
+    [Header("All Parts Database")]
+    [SerializeField] private List<O2TankSO> allO2Tanks = new List<O2TankSO>();
+    [SerializeField] private List<FuelTankSO> allFuelTanks = new List<FuelTankSO>();
+    [SerializeField] private List<ShoeSO> allShoes = new List<ShoeSO>();
+
     [Header("Default Parts")]
     [SerializeField] private O2TankSO defaultO2Tank;
     [SerializeField] private FuelTankSO defaultFuelTank;
@@ -15,21 +22,16 @@ public class LoadoutManager : MonoBehaviour
     [SerializeField] private FuelTankSO currentFuelTank;
     [SerializeField] private ShoeSO currentShoe;
 
-    private static LoadoutManager instance;
-    public static LoadoutManager Instance => instance;
-
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         if (currentO2Tank == null) currentO2Tank = defaultO2Tank;
         if (currentFuelTank == null) currentFuelTank = defaultFuelTank;
@@ -71,6 +73,56 @@ public class LoadoutManager : MonoBehaviour
         ApplyToPlayerIfFound();
     }
 
+    public void GetCurrentSelectionIds(out string o2Id, out string fuelId, out string shoeId)
+    {
+        o2Id = currentO2Tank != null ? currentO2Tank.id : "";
+        fuelId = currentFuelTank != null ? currentFuelTank.id : "";
+        shoeId = currentShoe != null ? currentShoe.id : "";
+    }
+
+    public void SetSelectedByIds(string o2Id, string fuelId, string shoeId)
+    {
+        O2TankSO foundO2 = FindO2TankById(o2Id);
+        FuelTankSO foundFuel = FindFuelTankById(fuelId);
+        ShoeSO foundShoe = FindShoeById(shoeId);
+
+        if (foundO2 != null) currentO2Tank = foundO2;
+        if (foundFuel != null) currentFuelTank = foundFuel;
+        if (foundShoe != null) currentShoe = foundShoe;
+
+        ApplyToPlayerIfFound();
+    }
+
+    private O2TankSO FindO2TankById(string id)
+    {
+        for (int i = 0; i < allO2Tanks.Count; i++)
+        {
+            if (allO2Tanks[i] != null && allO2Tanks[i].id == id)
+                return allO2Tanks[i];
+        }
+        return null;
+    }
+
+    private FuelTankSO FindFuelTankById(string id)
+    {
+        for (int i = 0; i < allFuelTanks.Count; i++)
+        {
+            if (allFuelTanks[i] != null && allFuelTanks[i].id == id)
+                return allFuelTanks[i];
+        }
+        return null;
+    }
+
+    private ShoeSO FindShoeById(string id)
+    {
+        for (int i = 0; i < allShoes.Count; i++)
+        {
+            if (allShoes[i] != null && allShoes[i].id == id)
+                return allShoes[i];
+        }
+        return null;
+    }
+
     private void ApplyToPlayerIfFound()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -87,10 +139,5 @@ public class LoadoutManager : MonoBehaviour
         PlayerMovement move = playerObj.GetComponent<PlayerMovement>();
         if (move != null && currentShoe != null)
             move.SetSpeed(currentShoe.moveSpeed);
-    }
-
-    public FuelTankSO GetCurrentLoadout()
-    {
-        return currentFuelTank;
     }
 }
