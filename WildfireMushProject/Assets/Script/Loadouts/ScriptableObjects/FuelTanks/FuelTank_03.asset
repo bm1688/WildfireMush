@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1556c38cd63a1e846a4648b5c88536bf, type: 3}
   m_Name: FuelTank_03
   m_EditorClassIdentifier: 
-  id: fuel_01
+  id: fuel_03
   displayName: Fuel Tank 01
   maxFuel: 130
   drainRate: 8

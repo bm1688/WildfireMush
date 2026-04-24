@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454d47cec07da164283ab989a2f88134, type: 3}
   m_Name: O2Tank_02
   m_EditorClassIdentifier: 
-  id: o2_01
+  id: o2_02
   displayName: O2 Tank 01
   maxO2: 100
   regenRate: 22
