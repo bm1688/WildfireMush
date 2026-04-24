@@ -70,7 +70,7 @@ public class PlayerAimAndShoot : MonoBehaviour
         if (_time > 1 / _firerate && _shooting)
         {
 
-            _playerFuel.ConsumeFuel(1);
+            _playerFuel.ConsumeFuel(_playerFuel.drainRate);
             _time = 0;
 
         }
