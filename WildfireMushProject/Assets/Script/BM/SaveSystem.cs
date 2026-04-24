@@ -15,7 +15,7 @@ public class SaveSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(_loadoutManager.GetCurrentLoadout());
+       
         PlayerPrefs.GetInt(O2DATA);
         PlayerPrefs.GetInt(FuelTankDATA);
         PlayerPrefs.GetInt(ShoeDATA);
@@ -28,5 +28,15 @@ public class SaveSystem : MonoBehaviour
         Debug.Log(PlayerPrefs.GetInt(O2DATA));
         PlayerPrefs.SetInt(O2DATA, 1);
         Debug.Log(PlayerPrefs.GetInt(O2DATA));
+    }
+
+    public void SaveLoadout()
+    {
+
+    }
+
+    public void LoadLoadout()
+    {
+
     }
 }
