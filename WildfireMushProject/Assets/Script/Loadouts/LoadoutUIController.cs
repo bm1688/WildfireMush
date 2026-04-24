@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LoadoutUIController : MonoBehaviour
 {
-    [SerializeField] private LoadoutManager loadoutManager;
+    private LoadoutManager loadoutManager;
 
     [Header("O2 Tanks (3)")]
     [SerializeField] private O2TankSO o2_01;

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class LevelStartAutoSave : MonoBehaviour
 {
+    [SerializeField] private bool autoSaveOnStart = true;
+
     private void Start()
     {
+        if (!autoSaveOnStart) return;
         if (SaveManager.Instance == null) return;
 
         if (SaveManager.Instance.IsLoadingGame)

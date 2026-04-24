@@ -58,18 +58,21 @@ public class LoadoutManager : MonoBehaviour
 
     public void SelectO2Tank(O2TankSO tank)
     {
+        Debug.Log(tank.name);
         currentO2Tank = tank;
         ApplyToPlayerIfFound();
     }
 
     public void SelectFuelTank(FuelTankSO tank)
     {
+        Debug.Log(tank.name);
         currentFuelTank = tank;
         ApplyToPlayerIfFound();
     }
 
     public void SelectShoe(ShoeSO shoe)
     {
+        Debug.Log(shoe.name);
         currentShoe = shoe;
         ApplyToPlayerIfFound();
     }
@@ -140,7 +143,11 @@ public class LoadoutManager : MonoBehaviour
     private void ApplyToPlayerIfFound()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj == null) return;
+        if (playerObj == null)
+        {
+            Debug.LogError("Player not found");
+            return;
+        }
 
         PlayerO2 o2 = playerObj.GetComponent<PlayerO2>();
         if (o2 != null)
