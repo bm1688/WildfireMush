@@ -38,6 +38,7 @@ public class LoadoutManager : MonoBehaviour
         if (currentShoe == null) currentShoe = defaultShoe;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+        Debug.Log("LoadoutManager Instance ID: " + GetInstanceID());
     }
 
     private void OnDestroy()
@@ -82,13 +83,26 @@ public class LoadoutManager : MonoBehaviour
 
     public void SetSelectedByIds(string o2Id, string fuelId, string shoeId)
     {
+        Debug.Log("SetSelectedByIds called");
+        Debug.Log("Wanted O2 = " + o2Id);
+        Debug.Log("Wanted Fuel = " + fuelId);
+        Debug.Log("Wanted Shoe = " + shoeId);
+
         O2TankSO foundO2 = FindO2TankById(o2Id);
         FuelTankSO foundFuel = FindFuelTankById(fuelId);
         ShoeSO foundShoe = FindShoeById(shoeId);
 
+        Debug.Log("Found O2 = " + (foundO2 != null ? foundO2.id : "NULL"));
+        Debug.Log("Found Fuel = " + (foundFuel != null ? foundFuel.id : "NULL"));
+        Debug.Log("Found Shoe = " + (foundShoe != null ? foundShoe.id : "NULL"));
+
         if (foundO2 != null) currentO2Tank = foundO2;
         if (foundFuel != null) currentFuelTank = foundFuel;
         if (foundShoe != null) currentShoe = foundShoe;
+
+        Debug.Log("Current O2 after set = " + (currentO2Tank != null ? currentO2Tank.id : "NULL"));
+        Debug.Log("Current Fuel after set = " + (currentFuelTank != null ? currentFuelTank.id : "NULL"));
+        Debug.Log("Current Shoe after set = " + (currentShoe != null ? currentShoe.id : "NULL"));
 
         ApplyToPlayerIfFound();
     }

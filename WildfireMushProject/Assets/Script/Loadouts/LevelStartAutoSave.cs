@@ -6,9 +6,14 @@ public class LevelStartAutoSave : MonoBehaviour
 {
     private void Start()
     {
-        if (SaveManager.Instance != null)
+        if (SaveManager.Instance == null) return;
+
+        if (SaveManager.Instance.IsLoadingGame)
         {
-            SaveManager.Instance.SaveCurrentGame();
+            Debug.Log("Auto Save skipped: scene was loaded from save.");
+            return;
         }
+
+        SaveManager.Instance.SaveCurrentGame();
     }
 }
