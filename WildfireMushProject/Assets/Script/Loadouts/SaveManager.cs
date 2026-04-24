@@ -49,6 +49,11 @@ public class SaveManager : MonoBehaviour
         File.WriteAllText(SavePath, json);
 
         Debug.Log("Game Saved: " + SavePath);
+        Debug.Log("Saving:");
+        Debug.Log("Level = " + data.levelId);
+        Debug.Log("O2 = " + data.o2TankId);
+        Debug.Log("Fuel = " + data.fuelTankId);
+        Debug.Log("Shoe = " + data.shoeId);
     }
 
     public void LoadGame()
@@ -67,8 +72,16 @@ public class SaveManager : MonoBehaviour
             Debug.LogWarning("Load failed: save data is invalid.");
             return;
         }
+       
+
 
         SceneManager.LoadScene(pendingLoadData.levelId);
+
+        Debug.Log("Loading file...");
+        Debug.Log("Loaded Level = " + pendingLoadData.levelId);
+        Debug.Log("Loaded O2 = " + pendingLoadData.o2TankId);
+        Debug.Log("Loaded Fuel = " + pendingLoadData.fuelTankId);
+        Debug.Log("Loaded Shoe = " + pendingLoadData.shoeId);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: O2Tank_03
   m_EditorClassIdentifier: 
   id: o2_03
-  displayName: O2 Tank 01
+  displayName: O2 Tank 03
   maxO2: 130
   regenRate: 26
   decreaseRate: 8

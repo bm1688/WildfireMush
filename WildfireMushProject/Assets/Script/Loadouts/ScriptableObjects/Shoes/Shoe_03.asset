@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shoe_03
   m_EditorClassIdentifier: 
   id: shoe_03
-  displayName: Shoe 01
+  displayName: Shoe 03
   moveSpeed: 6
