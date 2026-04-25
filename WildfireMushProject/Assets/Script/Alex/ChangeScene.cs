@@ -17,6 +17,12 @@ public class ChangeScene : MonoBehaviour
         Debug.Log("Quit Game");
         Application.Quit();
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // loads current scene
+        Debug.Log("Reset");
+    }
     //public void GameOver()
     //{
     //    Debug.Log("Player died! Loading GameOver scene");
