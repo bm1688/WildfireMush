@@ -552,14 +552,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799955033}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4032488607558012651}
   - {fileID: 7532691950631096030}
-  m_Father: {fileID: 2131446857}
+  m_Father: {fileID: 8300114716871173767}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1130,6 +1130,10 @@ PrefabInstance:
     - target: {fileID: 4647875821797350234, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751961881583838233, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
+      propertyPath: drainRate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8230806904867916539, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
       propertyPath: oxygen
@@ -1816,7 +1820,6 @@ RectTransform:
   - {fileID: 1790248159}
   - {fileID: 8300114716871173767}
   - {fileID: 1747150491}
-  - {fileID: 799955034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5701,6 +5704,7 @@ RectTransform:
   - {fileID: 4545477652932334787}
   - {fileID: 7196074180444247715}
   - {fileID: 380581751398631022}
+  - {fileID: 799955034}
   m_Father: {fileID: 2131446857}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

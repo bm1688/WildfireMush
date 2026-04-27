@@ -29,7 +29,14 @@ public class FireDamageScript : MonoBehaviour
         
        
         
-        if (hit && tree != null)
+
+        if (!hit) return;
+        if (tree == null ) return;
+        if (_timeSinceLastDamage < _damageInterval) return;
+        tree.ApplyDamage(_damagePerSecond * _damageInterval);
+        Debug.Log($"burning {tree}");
+        _timeSinceLastDamage = 0;
+        /*if (hit && tree != null)
         {
             Debug.Log("detected");
             if (_timeSinceLastDamage >= _damageInterval)
@@ -38,12 +45,12 @@ public class FireDamageScript : MonoBehaviour
                 Debug.Log($"burning {tree}");
                 _timeSinceLastDamage = 0;
             }
-        }
-        
-               
-        
-            
-        
+        } change to guard clause*/
+
+
+
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
