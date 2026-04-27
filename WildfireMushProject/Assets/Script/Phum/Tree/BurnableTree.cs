@@ -14,6 +14,7 @@ public class BurnableTree : MonoBehaviour, IDamageable
 
     [Header("Visual")]
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite treeSprite;
     [SerializeField] private Sprite ashSprite;
     [SerializeField] private Color damagedColor = new Color(1f, 0.5f, 0f, 1f);
 
@@ -28,7 +29,7 @@ public class BurnableTree : MonoBehaviour, IDamageable
     [SerializeField] private bool killPlayerOnTouchWhileBurning = true;
 
     [Header("Respawn time")]
-    [SerializeField] private float respawnTime = 30f;
+    [SerializeField] private float respawnTime = 10f;
 
     private float hp;
     private bool isDead;
@@ -37,6 +38,8 @@ public class BurnableTree : MonoBehaviour, IDamageable
     private Coroutine spawnRoutine;
     private Collider2D treeCollider;
     [SerializeField] private GameOver GameOverScript;
+    
+    [SerializeField] private BoxCollider2D BoxCollider2D;
 
     private void Awake()
     {
@@ -130,7 +133,9 @@ public class BurnableTree : MonoBehaviour, IDamageable
         if (mushroomPrefab != null)
             Instantiate(mushroomPrefab, transform.position, Quaternion.identity);
 
-        gameObject.SetActive(false);
+        spriteRenderer.enabled = false;
+        BoxCollider2D.enabled = false;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -165,11 +170,14 @@ public class BurnableTree : MonoBehaviour, IDamageable
         hp = maxHP;
         isDead = false;
         isBurning = false;
-        spriteRenderer.sprite = null;
+        spriteRenderer.sprite = treeSprite;
         spriteRenderer.color = originalColor;
         if (treeCollider != null)
             treeCollider.enabled = true;
         if (smokeZoneScaler != null)
             smokeZoneScaler.gameObject.SetActive(false);
+
+        spriteRenderer.enabled = true;
+        BoxCollider2D.enabled = true;
     }
 }

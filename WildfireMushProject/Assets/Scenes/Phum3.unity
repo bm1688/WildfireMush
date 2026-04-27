@@ -205,6 +205,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1269230439623729859, guid: e0626c9738566e14db0893b2615e3e77, type: 3}
+      propertyPath: respawnTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5448298669548400639, guid: e0626c9738566e14db0893b2615e3e77, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2808037
@@ -1961,7 +1965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6574243356eb5ee42a6300d0dc16f619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadoutManager: {fileID: 0}
   o2_01: {fileID: 11400000, guid: 04e61d5bd980c674d808a976a8edc90a, type: 2}
   o2_02: {fileID: 11400000, guid: c43b9b6d6c73126428c567ddf1381c8e, type: 2}
   o2_03: {fileID: 11400000, guid: dbb97810cf3621840b58cecbc46149f9, type: 2}
@@ -2795,6 +2798,18 @@ PrefabInstance:
     - target: {fileID: 4647875821797350234, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751961881583838233, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
+      propertyPath: maxFuel
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751961881583838233, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
+      propertyPath: drainRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751961881583838233, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
+      propertyPath: currentFuel
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8230806904867916539, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
       propertyPath: oxygen
