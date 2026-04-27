@@ -27,6 +27,9 @@ public class BurnableTree : MonoBehaviour, IDamageable
     [Header("Burning Kill")]
     [SerializeField] private bool killPlayerOnTouchWhileBurning = true;
 
+    [Header("Respawn time")]
+    [SerializeField] private float respawnTime = 30f;
+
     private float hp;
     private bool isDead;
     private bool isBurning;
@@ -116,6 +119,8 @@ public class BurnableTree : MonoBehaviour, IDamageable
             StopCoroutine(spawnRoutine);
 
         spawnRoutine = StartCoroutine(SpawnMushroomAfterDelay());
+        
+        StartCoroutine(RespawnAfterDelay());
     }
 
     private IEnumerator SpawnMushroomAfterDelay()
@@ -143,10 +148,28 @@ public class BurnableTree : MonoBehaviour, IDamageable
         if (!killPlayerOnTouchWhileBurning) return;
         if (!isBurning) return;
 
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Player died from touching a burning tree! Loading GameOver screen");
-            GameOverScript.GameOverScreen();
-        }
+        if (!other.CompareTag("Player")) return;
+
+        Debug.Log("Player died from touching a burning tree! Loading GameOver screen");
+        GameOverScript.GameOverScreen();
+    }
+
+    private IEnumerator RespawnAfterDelay()
+    {
+        yield return new WaitForSeconds(respawnTime);
+        RespawnTree();
+    }
+
+    private void RespawnTree()
+    {
+        hp = maxHP;
+        isDead = false;
+        isBurning = false;
+        spriteRenderer.sprite = null;
+        spriteRenderer.color = originalColor;
+        if (treeCollider != null)
+            treeCollider.enabled = true;
+        if (smokeZoneScaler != null)
+            smokeZoneScaler.gameObject.SetActive(false);
     }
 }
