@@ -8,7 +8,8 @@ public class PlayerO2 : MonoBehaviour
 
     public float currentO2 = 100;
     public float maxO2 = 100;
-    public OxygenTank oxygen;
+    //public OxygenTank oxygen;
+    public Presenter presenter;
 
     [Header("Rates")]
     [SerializeField] private float decreaseRate = 10f;
@@ -20,7 +21,7 @@ public class PlayerO2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        oxygen.SetMaxO2(maxO2);
+        presenter.SetMaxO2(maxO2);
         currentO2 = maxO2;
     }
 
@@ -31,6 +32,10 @@ public class PlayerO2 : MonoBehaviour
         {
             O2Decrease(decreaseRate);
         }
+        //else if (Input.GetKey("space"))
+        //{
+        //    O2Decrease(decreaseRate);
+        //}
         else
         {
             O2Regen(regenRate);
@@ -46,7 +51,7 @@ public class PlayerO2 : MonoBehaviour
             //Panel.SetActive(true);
         }
 
-        oxygen.SetO2(currentO2);
+        presenter.SetO2(currentO2);
     }
     void O2Decrease(float rate)
     {
@@ -84,7 +89,7 @@ public class PlayerO2 : MonoBehaviour
         if (refill)
             currentO2 = maxO2;
 
-        oxygen.SetMaxO2(maxO2);
-        oxygen.SetO2(currentO2);
+        presenter.SetMaxO2(maxO2);
+        presenter.SetO2(currentO2);
     }
 }

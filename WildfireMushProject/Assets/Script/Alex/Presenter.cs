@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Presenter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float currentO2;
+    public float maxO2;
+    public OxygenTank oxygen;
+    public void SetMaxO2(float health)
     {
-        
+        maxO2 = health;
+        oxygen.SetMaxO2(maxO2);
+        currentO2 = maxO2;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SetO2(float health)
     {
-        
+        currentO2 = health;
+    }
+    private void Update()
+    {
+        oxygen.SetO2(currentO2);
     }
 }
