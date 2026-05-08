@@ -12,11 +12,16 @@ public class BurnableTree : MonoBehaviour, IDamageable
     [Header("Burn Damage Over Time")]
     [SerializeField] private float burnDamagePerSecond = 10f;
 
-    [Header("Visual")]
+    [Header("Tree Visual")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite treeSprite;
-    [SerializeField] private Sprite ashSprite;
     [SerializeField] private Color damagedColor = new Color(1f, 0.5f, 0f, 1f);
+
+    [Header("Ash Visual")]
+    [SerializeField] private GameObject ashVisual;
+
+    [Header("Spawn Point")]
+    [SerializeField] private Transform groundPoint;
 
     [Header("Mushroom Spawn")]
     [SerializeField] private GameObject mushroomPrefab;
@@ -27,19 +32,19 @@ public class BurnableTree : MonoBehaviour, IDamageable
 
     [Header("Burning Kill")]
     [SerializeField] private bool killPlayerOnTouchWhileBurning = true;
+    [SerializeField] private GameOver gameOverScript;
 
-    [Header("Respawn time")]
+    [Header("Respawn Time")]
     [SerializeField] private float respawnTime = 10f;
 
     private float hp;
     private bool isDead;
     private bool isBurning;
     private Color originalColor;
-    private Coroutine spawnRoutine;
     private Collider2D treeCollider;
-    [SerializeField] private GameOver GameOverScript;
-    
-    [SerializeField] private BoxCollider2D BoxCollider2D;
+
+    private Coroutine spawnRoutine;
+    private Coroutine respawnRoutine;
 
     private void Awake()
     {
@@ -52,6 +57,9 @@ public class BurnableTree : MonoBehaviour, IDamageable
 
         originalColor = spriteRenderer.color;
 
+        if (ashVisual != null)
+            ashVisual.SetActive(false);
+
         if (smokeZoneScaler != null)
             smokeZoneScaler.gameObject.SetActive(false);
     }
@@ -63,12 +71,11 @@ public class BurnableTree : MonoBehaviour, IDamageable
 
         hp -= burnDamagePerSecond * Time.deltaTime;
 
-        if (hp < 0f) hp = 0f;
+        if (hp < 0f)
+            hp = 0f;
 
         if (hp <= 0f)
-        {
             BecomeAsh();
-        }
     }
 
     public void ApplyDamage(float damage)
@@ -76,7 +83,9 @@ public class BurnableTree : MonoBehaviour, IDamageable
         if (isDead) return;
 
         hp -= damage;
-        if (hp < 0f) hp = 0f;
+
+        if (hp < 0f)
+            hp = 0f;
 
         if (hp <= damagedThreshold && !isBurning)
         {
@@ -88,9 +97,7 @@ public class BurnableTree : MonoBehaviour, IDamageable
         }
 
         if (hp <= 0f)
-        {
             BecomeAsh();
-        }
     }
 
     private void StartBurning()
@@ -109,33 +116,93 @@ public class BurnableTree : MonoBehaviour, IDamageable
         isDead = true;
         isBurning = false;
 
-        spriteRenderer.sprite = ashSprite;
-        spriteRenderer.color = Color.white;
-
         if (treeCollider != null)
             treeCollider.enabled = false;
 
         if (smokeZoneScaler != null)
             smokeZoneScaler.StartShrink();
 
+        // Hide tree visual
+        spriteRenderer.enabled = false;
+
+        // Show ash at bottom-middle point
+        if (ashVisual != null)
+        {
+            if (groundPoint != null)
+                ashVisual.transform.position = groundPoint.position;
+
+            ashVisual.SetActive(true);
+        }
+
         if (spawnRoutine != null)
             StopCoroutine(spawnRoutine);
 
         spawnRoutine = StartCoroutine(SpawnMushroomAfterDelay());
-        
-        StartCoroutine(RespawnAfterDelay());
     }
 
     private IEnumerator SpawnMushroomAfterDelay()
     {
         yield return new WaitForSeconds(spawnDelay);
 
+        Vector3 spawnPosition = transform.position;
+
+        if (groundPoint != null)
+            spawnPosition = groundPoint.position;
+
+        // Hide ash when mushroom appears
+        if (ashVisual != null)
+            ashVisual.SetActive(false);
+
         if (mushroomPrefab != null)
-            Instantiate(mushroomPrefab, transform.position, Quaternion.identity);
+        {
+            GameObject mushroomObject = Instantiate(mushroomPrefab, spawnPosition, Quaternion.identity);
 
-        spriteRenderer.enabled = false;
-        BoxCollider2D.enabled = false;
+            Score scoreScript = mushroomObject.GetComponent<Score>();
 
+            if (scoreScript != null)
+            {
+                scoreScript.OnCollected += StartRespawnAfterMushroomCollected;
+            }
+            else
+            {
+                Debug.LogWarning("Mushroom prefab does not have Score script.");
+            }
+        }
+    }
+
+    private void StartRespawnAfterMushroomCollected()
+    {
+        if (respawnRoutine != null)
+            StopCoroutine(respawnRoutine);
+
+        respawnRoutine = StartCoroutine(RespawnAfterDelay());
+    }
+
+    private IEnumerator RespawnAfterDelay()
+    {
+        yield return new WaitForSeconds(respawnTime);
+
+        RespawnTree();
+    }
+
+    private void RespawnTree()
+    {
+        hp = maxHP;
+        isDead = false;
+        isBurning = false;
+
+        spriteRenderer.sprite = treeSprite;
+        spriteRenderer.color = originalColor;
+        spriteRenderer.enabled = true;
+
+        if (treeCollider != null)
+            treeCollider.enabled = true;
+
+        if (ashVisual != null)
+            ashVisual.SetActive(false);
+
+        if (smokeZoneScaler != null)
+            smokeZoneScaler.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -155,29 +222,7 @@ public class BurnableTree : MonoBehaviour, IDamageable
 
         if (!other.CompareTag("Player")) return;
 
-        Debug.Log("Player died from touching a burning tree! Loading GameOver screen");
-        GameOverScript.GameOverScreen();
-    }
-
-    private IEnumerator RespawnAfterDelay()
-    {
-        yield return new WaitForSeconds(respawnTime);
-        RespawnTree();
-    }
-
-    private void RespawnTree()
-    {
-        hp = maxHP;
-        isDead = false;
-        isBurning = false;
-        spriteRenderer.sprite = treeSprite;
-        spriteRenderer.color = originalColor;
-        if (treeCollider != null)
-            treeCollider.enabled = true;
-        if (smokeZoneScaler != null)
-            smokeZoneScaler.gameObject.SetActive(false);
-
-        spriteRenderer.enabled = true;
-        BoxCollider2D.enabled = true;
+        if (gameOverScript != null)
+            gameOverScript.GameOverScreen();
     }
 }
