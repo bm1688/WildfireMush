@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveLoadButtonUI : MonoBehaviour
 {
+    // Game Save / Load
     public void SaveGame()
     {
         if (SaveManager.Instance == null)
@@ -24,5 +23,43 @@ public class SaveLoadButtonUI : MonoBehaviour
         }
 
         SaveManager.Instance.LoadGame();
+    }
+
+    // Save Loadout Preset
+    public void SaveLoadout1()
+    {
+        if (SaveManager.Instance == null) return;
+        SaveManager.Instance.SaveLoadoutSlot1();
+    }
+
+    public void SaveLoadout2()
+    {
+        if (SaveManager.Instance == null) return;
+        SaveManager.Instance.SaveLoadoutSlot2();
+    }
+
+    public void SaveLoadout3()
+    {
+        if (SaveManager.Instance == null) return;
+        SaveManager.Instance.SaveLoadoutSlot3();
+    }
+
+    // Load Loadout Preset
+    public void LoadLoadout1()
+    {
+        if (SaveManager.Instance == null) return;
+        SaveManager.Instance.LoadLoadoutSlot1();
+    }
+
+    public void LoadLoadout2()
+    {
+        if (SaveManager.Instance == null) return;
+        SaveManager.Instance.LoadLoadoutSlot2();
+    }
+
+    public void LoadLoadout3()
+    {
+        if (SaveManager.Instance == null) return;
+        SaveManager.Instance.LoadLoadoutSlot3();
     }
 }
