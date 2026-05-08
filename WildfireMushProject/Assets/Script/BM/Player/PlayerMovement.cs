@@ -5,9 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rb;
+
+    [SerializeField] private Vector2 _movement;
+
     [SerializeField] private float _speed;
-    [SerializeField] private float moveX;
-    [SerializeField] private float moveY;
+    [SerializeField] private float _moveX;
+    public float MoveX { get { return _moveX; } }
+    [SerializeField] private float _moveY;
+    public float MoveY { get { return _moveY; } }
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +22,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveX = Input.GetAxisRaw("Horizontal");
-        moveY = Input.GetAxisRaw("Vertical");
+        _moveX = Input.GetAxisRaw("Horizontal");
+        _moveY = Input.GetAxisRaw("Vertical");
 
-        Vector2 movement = new Vector2(moveX, moveY).normalized;
+        _movement = new Vector2(_moveX, _moveY).normalized;
 
-        _rb.velocity = movement* _speed ;
+        _rb.velocity = _movement* _speed;
     }
     public void SetSpeed(float newSpeed)
     {
         _speed = newSpeed;
     }
+
+    
 }

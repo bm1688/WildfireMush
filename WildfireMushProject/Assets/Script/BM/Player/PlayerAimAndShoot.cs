@@ -9,6 +9,7 @@ public class PlayerAimAndShoot : MonoBehaviour
     [SerializeField] private Camera _cam;
 
     [SerializeField] private bool _shooting;
+    public bool Shooting { get { return _shooting; } }
 
     [SerializeField] private float _time;
     [SerializeField] private float _firerate;
@@ -17,6 +18,7 @@ public class PlayerAimAndShoot : MonoBehaviour
 
     [SerializeField] private Vector2 _mousePos;
     [SerializeField] private Vector2 _lookDir;
+    public Vector2 LookDir { get { return _lookDir; } }
 
     [SerializeField] private Transform _firePoint;
 
