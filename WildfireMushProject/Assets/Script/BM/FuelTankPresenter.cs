@@ -10,13 +10,25 @@ public class FuelTankPresenter : MonoBehaviour
     [SerializeField] private PlayerFuel _playerFuel;
     void Start()
     {
-        _fuelTankSlider.maxValue = _playerFuel.maxFuel;
-        _fuelTankSlider.value = _playerFuel.currentFuel;
+        SetMaxFuel(_playerFuel.maxFuel);
     }
 
     // Update is called once per frame
     void Update()
     {
-        _fuelTankSlider.value = _playerFuel.currentFuel;
+        
+        SetCurrentFuel(_playerFuel.currentFuel);
+        
+    }
+
+    public void SetMaxFuel(float maxfuel)
+    {
+        _fuelTankSlider.maxValue = maxfuel;
+        SetCurrentFuel(maxfuel);
+    }
+
+    public void SetCurrentFuel (float currentFuel)
+    {
+        _fuelTankSlider.value = currentFuel;
     }
 }
