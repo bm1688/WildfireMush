@@ -73,7 +73,7 @@ public class PlayerFuel : MonoBehaviour
         OnFuelChanged?.Invoke(_currentFuel, _maxFuel);
     }
 
-    private void Refuel()
+    public void Refuel()
     {
         _currentFuel = _refillAmount;
         Debug.Log("Refueled");
