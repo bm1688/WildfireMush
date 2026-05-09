@@ -32,7 +32,7 @@ public class RandomPattern : MonoBehaviour
         else if (collision.gameObject.GetComponent<PlayerMovement>())
         {
             Debug.Log("Game Over by random");
-            //Time.timeScale = 0f;
+            Time.timeScale = 0f;
         }
     }
 }
