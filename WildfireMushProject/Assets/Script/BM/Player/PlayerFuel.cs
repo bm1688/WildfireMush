@@ -11,6 +11,8 @@ public class PlayerFuel : MonoBehaviour
     [SerializeField] private float _maxFuel = 100f;
     public float maxFuel { get { return _maxFuel; } }
 
+    [SerializeField] private float _refillAmount;
+
     public float drainRate = 10f;
 
     // This event tells UI when fuel value or max fuel changes.
@@ -19,6 +21,15 @@ public class PlayerFuel : MonoBehaviour
     private void Start()
     {
         NotifyFuelChanged();
+        _refillAmount = maxFuel;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Refuel();
+        }
     }
 
     public void ApplyFuelTank(FuelTankSO tank, bool refill = true)
@@ -59,5 +70,12 @@ public class PlayerFuel : MonoBehaviour
     private void NotifyFuelChanged()
     {
         OnFuelChanged?.Invoke(_currentFuel, _maxFuel);
+    }
+
+    private void Refuel()
+    {
+        _currentFuel = _refillAmount;
+        Debug.Log("Refueled");
+        NotifyFuelChanged();
     }
 }

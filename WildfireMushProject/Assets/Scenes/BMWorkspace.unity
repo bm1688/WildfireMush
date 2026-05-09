@@ -4484,38 +4484,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4251548817411410032, guid: 822028d6235c779418b28731d2859708, type: 3}
-      propertyPath: sfxSounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251548817411410032, guid: 822028d6235c779418b28731d2859708, type: 3}
-      propertyPath: musicSounds.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251548817411410032, guid: 822028d6235c779418b28731d2859708, type: 3}
-      propertyPath: musicSounds.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: ee4f3918a4be84345bb68db86983b3fe, type: 3}
-    - target: {fileID: 4251548817411410032, guid: 822028d6235c779418b28731d2859708, type: 3}
-      propertyPath: musicSounds.Array.data[0].name
-      value: bgm
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251548817411410032, guid: 822028d6235c779418b28731d2859708, type: 3}
-      propertyPath: musicSounds.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5a0bb99b6bdf0374194fc7737785cfd9, type: 3}
-    - target: {fileID: 4251548817411410032, guid: 822028d6235c779418b28731d2859708, type: 3}
-      propertyPath: musicSounds.Array.data[1].name
-      value: otherbgm
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251548817411410032, guid: 822028d6235c779418b28731d2859708, type: 3}
-      propertyPath: musicSounds.Array.data[0].volume
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251548817411410032, guid: 822028d6235c779418b28731d2859708, type: 3}
-      propertyPath: musicSounds.Array.data[1].volume
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5768022985745014807, guid: 822028d6235c779418b28731d2859708, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -4558,10 +4526,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6298829690218968288, guid: 822028d6235c779418b28731d2859708, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7437012014604930294, guid: 822028d6235c779418b28731d2859708, type: 3}
-      propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6710,10 +6674,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2131446857}
     m_Modifications:
-    - target: {fileID: 591255021682581039, guid: 5955be75e35c42f44ac9444125927190, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -5
-      objectReference: {fileID: 0}
     - target: {fileID: 950486445891012012, guid: 5955be75e35c42f44ac9444125927190, type: 3}
       propertyPath: m_Name
       value: Fuel Tank UI
@@ -6753,10 +6713,6 @@ PrefabInstance:
     - target: {fileID: 5809252397124947051, guid: 5955be75e35c42f44ac9444125927190, type: 3}
       propertyPath: m_SizeDelta.y
       value: 188.6902
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809252397124947051, guid: 5955be75e35c42f44ac9444125927190, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2917
       objectReference: {fileID: 0}
     - target: {fileID: 5809252397124947051, guid: 5955be75e35c42f44ac9444125927190, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6810,18 +6766,6 @@ PrefabInstance:
       propertyPath: _playerFuel
       value: 
       objectReference: {fileID: 1492275289}
-    - target: {fileID: 7250632799982426567, guid: 5955be75e35c42f44ac9444125927190, type: 3}
-      propertyPath: m_Color.b
-      value: 0.21960786
-      objectReference: {fileID: 0}
-    - target: {fileID: 7250632799982426567, guid: 5955be75e35c42f44ac9444125927190, type: 3}
-      propertyPath: m_Color.g
-      value: 0.21960786
-      objectReference: {fileID: 0}
-    - target: {fileID: 7250632799982426567, guid: 5955be75e35c42f44ac9444125927190, type: 3}
-      propertyPath: m_Color.r
-      value: 0.21960786
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
