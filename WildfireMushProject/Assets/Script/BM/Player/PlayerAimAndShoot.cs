@@ -28,70 +28,64 @@ public class PlayerAimAndShoot : MonoBehaviour
     [SerializeField] private PlayerFuel _playerFuel;
 
     [SerializeField] private float _shootForce;
-    // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _playerFuel = GetComponent<PlayerFuel>();
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-
         _mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
 
         _lookDir = _mousePos - _rb.position;
         float angle = Mathf.Atan2(_lookDir.y, _lookDir.x) * Mathf.Rad2Deg - 90f;
-        
-        _firePoint.eulerAngles = new Vector3(0,0,angle);
+
+        _firePoint.eulerAngles = new Vector3(0, 0, angle);
 
         _firePrefab.transform.rotation = _firePoint.rotation;
         _firePrefab.transform.localPosition = _firePoint.up * _range;
 
         _time += Time.deltaTime;
 
-        
-        
-
         if (Input.GetMouseButtonDown(0) && _playerFuel.currentFuel > 0)
         {
             _shooting = true;
             _firePrefab.SetActive(true);
-            
+
+            if (AudioManager.instance != null)
+                AudioManager.instance.PlayFlamethrowerLoop();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            _shooting = false;
-            _firePrefab.SetActive(false);
+            StopShooting();
         }
 
         if (_time > 1 / _firerate && _shooting)
         {
-
             _playerFuel.ConsumeFuel(_playerFuel.drainRate);
             _time = 0;
-
         }
 
-        if (_playerFuel.currentFuel <= 0)
+        if (_playerFuel.currentFuel <= 0 && _shooting)
         {
-            _firePrefab.SetActive(false);
+            StopShooting();
         }
-
-
     }
 
-    private void Fire(bool isShooting)
+    private void StopShooting()
     {
-        //GameObject fire = Instantiate(_firePrefab, _firePoint.position, _firePoint.rotation);
-        //fire.transform.position = _firePoint.transform.up * _range;
-        //Rigidbody2D fireRB = fire.GetComponent<Rigidbody2D>();
-        //fireRB.AddForce( _firePoint.up *  _shootForce, ForceMode2D.Impulse);
+        _shooting = false;
+        _firePrefab.SetActive(false);
 
-        
+        if (AudioManager.instance != null)
+            AudioManager.instance.StopFlamethrowerLoop();
+    }
+
+    private void OnDisable()
+    {
+        if (AudioManager.instance != null)
+            AudioManager.instance.StopFlamethrowerLoop();
     }
 }

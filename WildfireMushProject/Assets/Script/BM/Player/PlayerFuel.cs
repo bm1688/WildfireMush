@@ -18,7 +18,11 @@ public class PlayerFuel : MonoBehaviour
         drainRate = tank.drainRate;
 
         if (refill)
+        {
+            AudioManager.instance.PlaySFX("addFuel");
             _currentFuel = _maxFuel;
+        }
+            
 
         if (_currentFuel > _maxFuel)
             _currentFuel = _maxFuel;

@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement>())
         {
+            AudioManager.instance.PlaySFX("mushroom");
             ScoreManager.instance.AddScore(1);
 
             OnCollected?.Invoke();
