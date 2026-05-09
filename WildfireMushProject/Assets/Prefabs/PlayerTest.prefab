@@ -261,9 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64534429331ea9e4aa85ded65a877148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFuel: 100
-  maxFuel: 100
-  drainRate: 0.25
+  _currentFuel: 100
+  _maxFuel: 100
+  drainRate: 1
 --- !u!114 &1274163920481827630
 MonoBehaviour:
   m_ObjectHideFlags: 0

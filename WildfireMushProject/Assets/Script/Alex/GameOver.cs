@@ -7,6 +7,7 @@ public class GameOver : MonoBehaviour
     [SerializeField] private GameObject Panel;
     public void GameOverScreen()
     {
+        AudioManager.instance.PlaySFX("gameOver");
         Time.timeScale = 0;
         Panel.SetActive(true);
     }

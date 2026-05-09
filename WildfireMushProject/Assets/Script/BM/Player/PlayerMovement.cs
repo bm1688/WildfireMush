@@ -11,15 +11,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _moveX;
     public float MoveX { get { return _moveX; } }
+
     [SerializeField] private float _moveY;
     public float MoveY { get { return _moveY; } }
-    // Start is called before the first frame update
+
+    private bool wasMoving;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         _moveX = Input.GetAxisRaw("Horizontal");
@@ -27,12 +29,37 @@ public class PlayerMovement : MonoBehaviour
 
         _movement = new Vector2(_moveX, _moveY).normalized;
 
-        _rb.velocity = _movement* _speed;
+        _rb.velocity = _movement * _speed;
+
+        HandleWalkingSound();
     }
+
+    private void HandleWalkingSound()
+    {
+        bool isMoving = _movement.sqrMagnitude > 0.01f;
+
+        if (isMoving && !wasMoving)
+        {
+            if (AudioManager.instance != null)
+                AudioManager.instance.PlayWalkingLoop();
+        }
+        else if (!isMoving && wasMoving)
+        {
+            if (AudioManager.instance != null)
+                AudioManager.instance.StopWalkingLoop();
+        }
+
+        wasMoving = isMoving;
+    }
+
     public void SetSpeed(float newSpeed)
     {
         _speed = newSpeed;
     }
 
-    
+    private void OnDisable()
+    {
+        if (AudioManager.instance != null)
+            AudioManager.instance.StopWalkingLoop();
+    }
 }
