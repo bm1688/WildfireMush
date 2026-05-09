@@ -46,9 +46,6 @@ public class PlayerO2 : MonoBehaviour
         {
             Debug.Log("Player died from lack of oxygen! Loading GameOver screen");
             GameOverScript.GameOverScreen();
-            //SceneManager.LoadScene("GameOver");
-            //Time.timeScale = 0;
-            //Panel.SetActive(true);
         }
 
         presenter.SetO2(currentO2);

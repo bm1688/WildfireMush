@@ -8,6 +8,7 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private Transform player; // Reference to the player's transform
     [SerializeField] private float speed = 3f; // Speed at which the enemy follows the player
     private Collider2D _collider;
+    [SerializeField] private GameOver GameOverScript;
     private void Start()
     {
         _collider = GetComponent<Collider2D>();
@@ -30,7 +31,7 @@ public class FollowPlayer : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerMovement>())
         {
             Debug.Log("Game Over by follow");
-            Time.timeScale = 0f;
+            GameOverScript.GameOverScreen();
         }
     }
 
