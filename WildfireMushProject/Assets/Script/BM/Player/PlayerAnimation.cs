@@ -28,7 +28,7 @@ public class PlayerAnimation : MonoBehaviour
             _spriteRenderer.flipX = true;
         }
 
-        if (!_playerAimAndShoot.Shooting)
+        //if (!_playerAimAndShoot.Shooting)
         {
             if (_playerMovement.MoveX > 0)
             {
@@ -69,6 +69,7 @@ public class PlayerAnimation : MonoBehaviour
             else
             {
                 _playerAnimator.SetBool("IsShooting", false);
+                _playerAnimator.SetBool("IsRunning", false );
             }
         }
 
