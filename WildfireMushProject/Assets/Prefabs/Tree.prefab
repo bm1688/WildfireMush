@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7007480167158412326}
   - component: {fileID: 3316813651031788854}
   - component: {fileID: 3891250267694168345}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmokeZone
   m_TagString: Smoke
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5520918446010512779}
   - component: {fileID: 56273493719542983}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AshVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4294576019647471095}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 202529956298060437}
   - component: {fileID: 4559073209693978989}
   - component: {fileID: 1269230439623729859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
