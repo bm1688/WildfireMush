@@ -7,7 +7,8 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text scoreText;
     public static ScoreManager instance;
-    private int score = 0;
+    [SerializeField] private int score = 0;
+    public int Score { get { return score; } }
  
 
 
