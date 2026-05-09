@@ -103,7 +103,8 @@ public class BurnableTree : MonoBehaviour, IDamageable
     private void StartBurning()
     {
         isBurning = true;
-        AudioManager.instance.PlaySFX("burning");
+        if (AudioManager.instance != null)
+            AudioManager.instance.PlayBurningLoop();
         spriteRenderer.color = damagedColor;
 
         if (smokeZoneScaler != null)
@@ -116,6 +117,9 @@ public class BurnableTree : MonoBehaviour, IDamageable
 
         isDead = true;
         isBurning = false;
+
+        if (AudioManager.instance != null)
+            AudioManager.instance.StopBurningLoop();
 
         if (treeCollider != null)
             treeCollider.enabled = false;

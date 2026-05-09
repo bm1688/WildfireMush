@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     [Header("Loop SFX Sources")]
     public AudioSource walkingSource;
     public AudioSource flamethrowerSource;
+    public AudioSource burningSource;
 
     [Header("Scene Music Settings")]
     public SceneMusic[] sceneMusicList;
@@ -53,6 +54,7 @@ public class AudioManager : MonoBehaviour
 
         StopWalkingLoop();
         StopFlamethrowerLoop();
+        StopBurningLoop();
     }
 
     private void PlayMusicForCurrentScene()
@@ -156,5 +158,14 @@ public class AudioManager : MonoBehaviour
     public void StopFlamethrowerLoop()
     {
         StopLoopSFX(flamethrowerSource);
+    }
+
+    public void PlayBurningLoop()
+    {
+        PlayLoopSFX(burningSource, "burning");
+    }
+    public void StopBurningLoop()
+    {
+        StopLoopSFX(burningSource);
     }
 }

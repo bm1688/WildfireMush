@@ -1936,10 +1936,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1006895774}
     m_Modifications:
-    - target: {fileID: 591255021682581039, guid: 5955be75e35c42f44ac9444125927190, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -5
-      objectReference: {fileID: 0}
     - target: {fileID: 950486445891012012, guid: 5955be75e35c42f44ac9444125927190, type: 3}
       propertyPath: m_Name
       value: Fuel Tank UI
@@ -1979,10 +1975,6 @@ PrefabInstance:
     - target: {fileID: 5809252397124947051, guid: 5955be75e35c42f44ac9444125927190, type: 3}
       propertyPath: m_SizeDelta.y
       value: 188.6902
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809252397124947051, guid: 5955be75e35c42f44ac9444125927190, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2917
       objectReference: {fileID: 0}
     - target: {fileID: 5809252397124947051, guid: 5955be75e35c42f44ac9444125927190, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2036,18 +2028,6 @@ PrefabInstance:
       propertyPath: _playerFuel
       value: 
       objectReference: {fileID: 564172161}
-    - target: {fileID: 7250632799982426567, guid: 5955be75e35c42f44ac9444125927190, type: 3}
-      propertyPath: m_Color.b
-      value: 0.21960786
-      objectReference: {fileID: 0}
-    - target: {fileID: 7250632799982426567, guid: 5955be75e35c42f44ac9444125927190, type: 3}
-      propertyPath: m_Color.g
-      value: 0.21960786
-      objectReference: {fileID: 0}
-    - target: {fileID: 7250632799982426567, guid: 5955be75e35c42f44ac9444125927190, type: 3}
-      propertyPath: m_Color.r
-      value: 0.21960786
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
