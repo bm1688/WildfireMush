@@ -27,10 +27,10 @@ public class FollowPlayer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<SimpleTest>())
+        if (collision.gameObject.GetComponent<PlayerMovement>())
         {
             Debug.Log("Game Over by follow");
-            //Time.timeScale = 0f;
+            Time.timeScale = 0f;
         }
     }
 
