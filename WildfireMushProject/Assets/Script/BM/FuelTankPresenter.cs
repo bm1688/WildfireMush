@@ -6,29 +6,33 @@ using UnityEngine.UI;
 public class FuelTankPresenter : MonoBehaviour
 {
     [SerializeField] private Slider _fuelTankSlider;
-
     [SerializeField] private PlayerFuel _playerFuel;
-    void Start()
+
+    private void Start()
     {
-        SetMaxFuel(_playerFuel.maxFuel);
+        if (_playerFuel == null)
+        {
+            _playerFuel = FindObjectOfType<PlayerFuel>();
+        }
+
+        if (_playerFuel != null)
+        {
+            _playerFuel.OnFuelChanged += UpdateFuelUI;
+            UpdateFuelUI(_playerFuel.currentFuel, _playerFuel.maxFuel);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
-        SetCurrentFuel(_playerFuel.currentFuel);
-        
+        if (_playerFuel != null)
+        {
+            _playerFuel.OnFuelChanged -= UpdateFuelUI;
+        }
     }
 
-    public void SetMaxFuel(float maxfuel)
+    private void UpdateFuelUI(float currentFuel, float maxFuel)
     {
-        _fuelTankSlider.maxValue = maxfuel;
-        SetCurrentFuel(maxfuel);
-    }
-
-    public void SetCurrentFuel (float currentFuel)
-    {
+        _fuelTankSlider.maxValue = maxFuel;
         _fuelTankSlider.value = currentFuel;
     }
 }

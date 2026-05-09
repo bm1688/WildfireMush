@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,19 @@ public class PlayerFuel : MonoBehaviour
 {
     [SerializeField] private float _currentFuel = 100f;
     public float currentFuel { get { return _currentFuel; } }
+
     [SerializeField] private float _maxFuel = 100f;
-    public float maxFuel {  get { return _maxFuel; } } 
+    public float maxFuel { get { return _maxFuel; } }
+
     public float drainRate = 10f;
+
+    // This event tells UI when fuel value or max fuel changes.
+    public event Action<float, float> OnFuelChanged;
+
+    private void Start()
+    {
+        NotifyFuelChanged();
+    }
 
     public void ApplyFuelTank(FuelTankSO tank, bool refill = true)
     {
@@ -19,23 +30,34 @@ public class PlayerFuel : MonoBehaviour
 
         if (refill)
         {
-            AudioManager.instance.PlaySFX("addFuel");
+            if (AudioManager.instance != null)
+                AudioManager.instance.PlaySFX("addFuel");
+
             _currentFuel = _maxFuel;
         }
-            
 
         if (_currentFuel > _maxFuel)
             _currentFuel = _maxFuel;
+
+        NotifyFuelChanged();
     }
 
-    // add with fire gun: call ConsumeFuel(amount)
     public bool ConsumeFuel(float amount)
     {
         if (_currentFuel <= 0f) return false;
 
         _currentFuel -= amount;
-        if (_currentFuel < 0f) _currentFuel = 0f;
+
+        if (_currentFuel < 0f)
+            _currentFuel = 0f;
+
+        NotifyFuelChanged();
 
         return true;
+    }
+
+    private void NotifyFuelChanged()
+    {
+        OnFuelChanged?.Invoke(_currentFuel, _maxFuel);
     }
 }
