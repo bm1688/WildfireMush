@@ -26,10 +26,10 @@ public class PlayerFuel : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        /*if (Input.GetKeyDown(KeyCode.R))
         {
             Refuel();
-        }
+        }*/
     }
 
     public void ApplyFuelTank(FuelTankSO tank, bool refill = true)
