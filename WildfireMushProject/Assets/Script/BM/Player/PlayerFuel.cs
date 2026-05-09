@@ -4,31 +4,33 @@ using UnityEngine;
 
 public class PlayerFuel : MonoBehaviour
 {
-    public float currentFuel = 100f;
-    public float maxFuel = 100f;
+    [SerializeField] private float _currentFuel = 100f;
+    public float currentFuel { get { return _currentFuel; } }
+    [SerializeField] private float _maxFuel = 100f;
+    public float maxFuel {  get { return _maxFuel; } } 
     public float drainRate = 10f;
 
     public void ApplyFuelTank(FuelTankSO tank, bool refill = true)
     {
         if (tank == null) return;
 
-        maxFuel = tank.maxFuel;
+        _maxFuel = tank.maxFuel;
         drainRate = tank.drainRate;
 
         if (refill)
-            currentFuel = maxFuel;
+            _currentFuel = _maxFuel;
 
-        if (currentFuel > maxFuel)
-            currentFuel = maxFuel;
+        if (_currentFuel > _maxFuel)
+            _currentFuel = _maxFuel;
     }
 
     // add with fire gun: call ConsumeFuel(amount)
     public bool ConsumeFuel(float amount)
     {
-        if (currentFuel <= 0f) return false;
+        if (_currentFuel <= 0f) return false;
 
-        currentFuel -= amount;
-        if (currentFuel < 0f) currentFuel = 0f;
+        _currentFuel -= amount;
+        if (_currentFuel < 0f) _currentFuel = 0f;
 
         return true;
     }
