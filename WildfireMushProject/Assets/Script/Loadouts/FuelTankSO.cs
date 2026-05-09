@@ -25,10 +25,4 @@ public class FuelTankSO : ScriptableObject
     public float maxFuel = 100f;
     public float drainRate = 10f;
 
-    public void AddFuel(float amount)
-    {
-        // add fuel logic here, for example, you can have a currentFuel variable and add the amount to it, making sure it doesn't exceed maxFuel
-      
-    }
-
 }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: fuel_03
   displayName: Fuel Tank 03
-  maxFuel: 130
-  drainRate: 8
+  maxFuel: 400
+  drainRate: 5

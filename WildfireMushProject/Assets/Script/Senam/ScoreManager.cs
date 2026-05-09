@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     public static ScoreManager instance;
     private int score = 0;
+ 
+
 
     private void Awake()
     {
@@ -24,5 +26,10 @@ public class ScoreManager : MonoBehaviour
     {
         score += value;
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    public int CurrentScore
+    {
+        get { return score; }
     }
 }

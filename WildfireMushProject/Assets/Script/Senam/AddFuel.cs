@@ -10,8 +10,7 @@ public class AddFuel : MonoBehaviour
     [SerializeField] private LoadoutManager loadoutManager;
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private FuelTankSO fuelTankSO;
-    [SerializeField] private int price = 10;
-    [SerializeField] private int fuelAmountToAdd = 10;
+    [SerializeField] private int price = 50;
 
     private void Awake()
     {
@@ -33,9 +32,18 @@ public class AddFuel : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ScoreManager.instance.AddScore(-price);
-            FuelTankSO.Instance.AddFuel(fuelAmountToAdd); //place holder, need to get fuel amount from loadout manager according to current loadout
-            // FuelTankSO.Instance.AddFuel(LoadoutManager.Instance.GetCurrentLoadout().fuelAmount);
+           if(scoreManager.CurrentScore >= price)
+            {
+                ScoreManager.instance.AddScore(-price);
+                // call player fuel tank to add fuel according to loadout type
+                PlayerFuel playerFuel = FindObjectOfType<PlayerFuel>();
+                if (playerFuel != null)
+                {
+                    playerFuel.ApplyFuelTank(fuelTankSO, true);
+                }
+            }
+
+
         }
     }
 

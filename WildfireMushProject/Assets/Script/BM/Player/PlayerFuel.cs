@@ -26,10 +26,7 @@ public class PlayerFuel : MonoBehaviour
 
     private void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.R))
-        {
-            Refuel();
-        }*/
+ 
     }
 
     public void ApplyFuelTank(FuelTankSO tank, bool refill = true)
@@ -73,10 +70,14 @@ public class PlayerFuel : MonoBehaviour
         OnFuelChanged?.Invoke(_currentFuel, _maxFuel);
     }
 
-    public void Refuel()
+    public void Refuel(float amount)
     {
-        _currentFuel = _refillAmount;
-        Debug.Log("Refueled");
+        _currentFuel += amount;
+        if (_currentFuel > _maxFuel)
+            _currentFuel = _maxFuel;
         NotifyFuelChanged();
     }
+
+
+
 }
