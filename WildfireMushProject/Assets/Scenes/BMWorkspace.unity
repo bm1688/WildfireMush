@@ -5668,10 +5668,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7751961881583838233, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
-      propertyPath: drainRate
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 8230806904867916539, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
       propertyPath: GameOverScript
       value: 
