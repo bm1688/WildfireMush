@@ -36,6 +36,7 @@ public class PlayerAimAndShoot : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0) { return; }
         _mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
 
         _lookDir = _mousePos - _rb.position;
