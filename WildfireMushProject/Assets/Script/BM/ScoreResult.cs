@@ -16,17 +16,17 @@ public class ScoreResult : MonoBehaviour
     
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         if (_timer.currentTime >= _timer.TimerDuration)
         {
             Time.timeScale = 0.0f;
             _scorePage.SetActive(true);
             _scoreResultText.text = "Score Result: " + _scoreManager.Score.ToString();
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

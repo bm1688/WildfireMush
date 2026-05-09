@@ -2627,7 +2627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c860eeacfbaad459931b2b6d77781d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: 
+  _sceneName: Stage02
 --- !u!114 &1188617798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4731,6 +4731,26 @@ PrefabInstance:
     - target: {fileID: 4792241823394324029, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
       propertyPath: m_Name
       value: ScorePage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757700332709534422, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
+      propertyPath: m_Name
+      value: 'NextStageButton '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103201807463333174, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1188617797}
+    - target: {fileID: 8103201807463333174, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103201807463333174, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChangeScene, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103201807463333174, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8957888293055148090, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
       propertyPath: m_Pivot.x
