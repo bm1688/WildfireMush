@@ -10,6 +10,7 @@ public class ChangeScene : MonoBehaviour
     public void NextScene()
     {
         Debug.Log($"Loaded {_sceneName} scene");
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(_sceneName);
     }
     public void ExitGame()
