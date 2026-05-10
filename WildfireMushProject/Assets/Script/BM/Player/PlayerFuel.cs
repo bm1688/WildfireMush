@@ -41,6 +41,8 @@ public class PlayerFuel : MonoBehaviour
         if (_currentFuel > _maxFuel)
             _currentFuel = _maxFuel;
 
+        Refill();
+
         NotifyFuelChanged();
     }
 
