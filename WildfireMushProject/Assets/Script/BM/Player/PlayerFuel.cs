@@ -70,11 +70,11 @@ public class PlayerFuel : MonoBehaviour
         OnFuelChanged?.Invoke(_currentFuel, _maxFuel);
     }
 
-    public void Refuel(float amount)
+ public void Refill()
     {
-        _currentFuel += amount;
-        if (_currentFuel > _maxFuel)
-            _currentFuel = _maxFuel;
+        if (AudioManager.instance != null)
+            AudioManager.instance.PlaySFX("addFuel");
+        _currentFuel = _maxFuel;
         NotifyFuelChanged();
     }
 

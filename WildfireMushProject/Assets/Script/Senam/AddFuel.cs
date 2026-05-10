@@ -39,7 +39,7 @@ public class AddFuel : MonoBehaviour
                 PlayerFuel playerFuel = FindObjectOfType<PlayerFuel>();
                 if (playerFuel != null)
                 {
-                    playerFuel.ApplyFuelTank(fuelTankSO, true);
+                    playerFuel.Refill();
                 }
             }
 
