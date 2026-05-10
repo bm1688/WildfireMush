@@ -2068,6 +2068,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5448298669548400639, guid: e0626c9738566e14db0893b2615e3e77, type: 3}
   m_PrefabInstance: {fileID: 594904907}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &656171459 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6544470325943184194, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
+  m_PrefabInstance: {fileID: 1799452402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c860eeacfbaad459931b2b6d77781d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &660396392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5382,13 +5393,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 856388420}
-  - {fileID: 1744552873}
   - {fileID: 1915634259}
   - {fileID: 901848458}
   - {fileID: 780707548}
   - {fileID: 381937740}
   - {fileID: 1483668030}
   - {fileID: 799602648}
+  - {fileID: 1744552873}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6513,6 +6524,14 @@ PrefabInstance:
     - target: {fileID: 6544470325943184194, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
       propertyPath: _sceneName
       value: Congratulation
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103201807463333174, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 656171459}
+    - target: {fileID: 8103201807463333174, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextScene
       objectReference: {fileID: 0}
     - target: {fileID: 8957888293055148090, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
       propertyPath: m_Pivot.x
