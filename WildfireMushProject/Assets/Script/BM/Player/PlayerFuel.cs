@@ -37,6 +37,11 @@ public class PlayerFuel : MonoBehaviour
         drainRate = tank.drainRate;
         _refillAmount = maxFuel;
 
+        if (refill)
+        {
+            _currentFuel = maxFuel;
+        }
+
 
         if (_currentFuel > _maxFuel)
             _currentFuel = _maxFuel;
