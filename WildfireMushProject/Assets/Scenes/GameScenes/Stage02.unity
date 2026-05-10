@@ -3850,6 +3850,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0626c9738566e14db0893b2615e3e77, type: 3}
+--- !u!1 &1252309190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7433777150220811935, guid: ec0df1c032ad00a4584efcb89a2f3c6c, type: 3}
+  m_PrefabInstance: {fileID: 147012416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1255029560 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5448298669548400639, guid: e0626c9738566e14db0893b2615e3e77, type: 3}
@@ -4791,7 +4796,7 @@ PrefabInstance:
     - target: {fileID: 8230806904867916539, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
       propertyPath: GameOverScript
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1971635125}
     - target: {fileID: 8379930867068400649, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
       propertyPath: oxygen
       value: 
@@ -6062,7 +6067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e587b3942ddf5644b1302c9a3de42c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 2085618117}
+  Panel: {fileID: 1252309190}
 --- !u!114 &1971635126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6279,11 +6284,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5448298669548400639, guid: e0626c9738566e14db0893b2615e3e77, type: 3}
   m_PrefabInstance: {fileID: 323673602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2085618117 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1992543843461485619, guid: ec0df1c032ad00a4584efcb89a2f3c6c, type: 3}
-  m_PrefabInstance: {fileID: 147012416}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2097415643
 PrefabInstance:
