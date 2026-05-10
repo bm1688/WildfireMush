@@ -20,6 +20,7 @@ public class PlayerFuel : MonoBehaviour
 
     private void Start()
     {
+        _currentFuel = maxFuel;
         NotifyFuelChanged();
         _refillAmount = maxFuel;
     }
@@ -37,16 +38,16 @@ public class PlayerFuel : MonoBehaviour
         drainRate = tank.drainRate;
         _refillAmount = maxFuel;
 
-        if (refill)
+        /*if (refill)
         {
             _currentFuel = maxFuel;
-        }
+        }*/
 
 
         if (_currentFuel > _maxFuel)
             _currentFuel = _maxFuel;
 
-        Refill();
+        //Refill();
 
         NotifyFuelChanged();
     }
