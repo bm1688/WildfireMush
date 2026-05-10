@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    // This script makes the enemy follow the player
-    [SerializeField] private Transform player; // Reference to the player's transform
-    [SerializeField] private float speed = 3f; // Speed at which the enemy follows the player
+
+    [SerializeField] private Transform player; 
+    [SerializeField] private float speed = 3f; 
     private Collider2D _collider;
     [SerializeField] private GameOver GameOverScript;
     private void Start()
@@ -18,9 +18,7 @@ public class FollowPlayer : MonoBehaviour
     {
         if (player != null)
         {
-            // Calculate the direction from the enemy to the player
             Vector3 direction = (player.position - transform.position).normalized;
-            // Move the enemy towards the player
             transform.Translate(direction * speed * Time.deltaTime, Space.World);           
         }
        
