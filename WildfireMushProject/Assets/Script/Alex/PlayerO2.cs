@@ -17,6 +17,7 @@ public class PlayerO2 : MonoBehaviour
     [SerializeField] private GameOver GameOverScript;
 
     private bool inSmoke = false;
+    private bool death = true;
 
     // Start is called before the first frame update
     void Start()
@@ -42,8 +43,9 @@ public class PlayerO2 : MonoBehaviour
         }
 
         if (currentO2 > maxO2) currentO2 = maxO2;
-        if (currentO2 < 0)
+        if (currentO2 < 0 && death == true)
         {
+            death = false;
             Debug.Log("Player died from lack of oxygen! Loading GameOver screen");
             GameOverScript.GameOverScreen();
         }
