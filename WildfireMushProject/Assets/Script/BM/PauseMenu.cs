@@ -30,11 +30,11 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F) && _saveLoadToggleValue == 0)
         {
-            OpenSaveLoad();
+            OpenLoadout();
         }
         else if (Input.GetKeyDown(KeyCode.F) && _saveLoadToggleValue == 1)
         {
-            CloseSaveLoad();
+            CloseLoadout();
         }
     }
 
@@ -46,32 +46,32 @@ public class PauseMenu : MonoBehaviour
     private void PauseGame()
     {
         _pausePanel.enabled = true;
-        _loadoutUI.SetActive(true);
+        //_loadoutUI.SetActive(true);
         _toggleValue = 1;
         Time.timeScale = 0f;
     }
 
     private void Continue()
     {
-        CloseSaveLoad();
+        CloseLoadout();
         _pausePanel.enabled = false;
         _loadoutUI.SetActive(false);
         _toggleValue = 0;
         Time.timeScale = 1f;
     }
 
-    private void OpenSaveLoad()
+    private void OpenLoadout()
     {
-        _loadoutRootUI.SetActive(true);
-        _loadoutSaveLoadUI.SetActive(true);
+        _loadoutUI.SetActive(true);
         _saveLoadToggleValue = 1;
+        Time.timeScale = 0f;
     }
         
-    private void CloseSaveLoad()
+    private void CloseLoadout()
     {
-        _loadoutRootUI.SetActive(false );
-        _loadoutSaveLoadUI.SetActive(false );
+        _loadoutUI.SetActive(false );
         _saveLoadToggleValue = 0;
+        Time.timeScale = 1f;
     }
     
 }
