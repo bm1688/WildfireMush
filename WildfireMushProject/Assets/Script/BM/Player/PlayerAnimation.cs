@@ -72,6 +72,14 @@ public class PlayerAnimation : MonoBehaviour
                 _playerAnimator.SetBool("IsRunning", false );
             }
         }
+        else
+        {
+            if (_playerAimAndShoot.Shooting)
+            {
+                _playerAnimator.SetBool("IsShooting", true);
+                _playerAnimator.SetBool("IsRunning", true);
+            }
+        }
 
 
     }
