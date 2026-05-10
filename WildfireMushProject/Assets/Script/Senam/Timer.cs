@@ -23,9 +23,5 @@ public class Timer : MonoBehaviour
     {
         timer += Time.deltaTime; 
 
-        /*if (timer >= timerDuration)
-        {
-            Time.timeScale = 0f;
-        }*/
     }
 }

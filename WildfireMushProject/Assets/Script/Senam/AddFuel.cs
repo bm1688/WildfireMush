@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AddFuel : MonoBehaviour
 {
-// when player presses R key, it called ScoreManager to minus score by 10, then called FuelTankSO to add fuel by according to loadout type
-
 
     [SerializeField] private LoadoutManager loadoutManager;
     [SerializeField] private ScoreManager scoreManager;
@@ -35,7 +33,6 @@ public class AddFuel : MonoBehaviour
            if(scoreManager.CurrentScore >= price)
             {
                 ScoreManager.instance.AddScore(-price);
-                // call player fuel tank to add fuel according to loadout type
                 PlayerFuel playerFuel = FindObjectOfType<PlayerFuel>();
                 if (playerFuel != null)
                 {
