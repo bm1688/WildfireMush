@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LoadoutManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class LoadoutManager : MonoBehaviour
     [SerializeField] private FuelTankSO currentFuelTank;
     [SerializeField] private ShoeSO currentShoe;
 
+    public event Action OnLoadoutChanged;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -61,6 +63,7 @@ public class LoadoutManager : MonoBehaviour
 
         currentO2Tank = tank;
         ApplyToPlayerIfFound();
+        NotifyLoadoutChanged();
     }
 
     public void SelectFuelTank(FuelTankSO tank)
@@ -69,6 +72,7 @@ public class LoadoutManager : MonoBehaviour
 
         currentFuelTank = tank;
         ApplyToPlayerIfFound();
+        NotifyLoadoutChanged();
     }
 
     public void SelectShoe(ShoeSO shoe)
@@ -77,6 +81,7 @@ public class LoadoutManager : MonoBehaviour
 
         currentShoe = shoe;
         ApplyToPlayerIfFound();
+        NotifyLoadoutChanged();
     }
 
     public void GetCurrentSelectionIds(out string o2Id, out string fuelId, out string shoeId)
@@ -97,6 +102,7 @@ public class LoadoutManager : MonoBehaviour
         if (foundShoe != null) currentShoe = foundShoe;
 
         ApplyToPlayerIfFound();
+        NotifyLoadoutChanged();
     }
 
     private O2TankSO FindO2TankById(string id)
@@ -148,5 +154,17 @@ public class LoadoutManager : MonoBehaviour
         PlayerMovement move = playerObj.GetComponent<PlayerMovement>();
         if (move != null && currentShoe != null)
             move.SetSpeed(currentShoe.moveSpeed);
+    }
+
+    public void GetCurrentSelectionObjects(out O2TankSO o2, out FuelTankSO fuel, out ShoeSO shoe)
+    {
+        o2 = currentO2Tank;
+        fuel = currentFuelTank;
+        shoe = currentShoe;
+    }
+
+    private void NotifyLoadoutChanged()
+    {
+        OnLoadoutChanged?.Invoke();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class SaveManager : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class SaveManager : MonoBehaviour
     private string GameSavePath => Path.Combine(Application.persistentDataPath, gameFileName);
     private string LoadoutSavePath => Path.Combine(Application.persistentDataPath, loadoutFileName);
 
+    private int currentSelectedLoadoutSlot = 0;
+    public int CurrentSelectedLoadoutSlot { get { return currentSelectedLoadoutSlot; } }
+
+    public event Action OnSelectedLoadoutSlotChanged;
     public bool IsLoadingGame => isLoadingGame;
 
     private void Awake()
@@ -51,6 +56,7 @@ public class SaveManager : MonoBehaviour
         SaveData data = new SaveData();
 
         data.levelId = SceneManager.GetActiveScene().name;
+        data.selectedLoadoutSlot = currentSelectedLoadoutSlot;
 
         LoadoutManager.Instance.GetCurrentSelectionIds(
             out data.o2TankId,
@@ -82,6 +88,8 @@ public class SaveManager : MonoBehaviour
         }
 
         isLoadingGame = true;
+
+        SetCurrentSelectedLoadoutSlot(pendingLoadData.selectedLoadoutSlot);
 
         if (LoadoutManager.Instance != null)
         {
@@ -157,6 +165,7 @@ public class SaveManager : MonoBehaviour
             slotsData.loadout3 = slotData;
 
         WriteLoadoutSlotsFile(slotsData);
+        SetCurrentSelectedLoadoutSlot(slotNumber);
     }
 
     private void LoadLoadoutSlot(int slotNumber)
@@ -183,6 +192,8 @@ public class SaveManager : MonoBehaviour
             Debug.LogWarning("Load loadout failed: LoadoutManager not found.");
             return;
         }
+
+        SetCurrentSelectedLoadoutSlot(slotNumber);
 
         LoadoutManager.Instance.SetSelectedByIds(
             slotData.o2TankId,
@@ -230,5 +241,14 @@ public class SaveManager : MonoBehaviour
     {
         if (File.Exists(LoadoutSavePath))
             File.Delete(LoadoutSavePath);
+    }
+    private void SetCurrentSelectedLoadoutSlot(int slotNumber)
+    {
+        currentSelectedLoadoutSlot = slotNumber;
+        OnSelectedLoadoutSlotChanged?.Invoke();
+    }
+    public void ClearSelectedLoadoutSlot()
+    {
+        currentSelectedLoadoutSlot = 0;
     }
 }
