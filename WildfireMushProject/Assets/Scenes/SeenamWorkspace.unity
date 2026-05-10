@@ -594,6 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 68241879}
   speed: 2
+  GameOverScript: {fileID: 0}
 --- !u!212 &163264646
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1084,6 +1085,7 @@ MonoBehaviour:
   speed: 5
   position: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
+  GameOverScript: {fileID: 0}
 --- !u!1 &811465267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,6 +1646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1100818932}
+  score: 0
 --- !u!4 &1265533887
 Transform:
   m_ObjectHideFlags: 0
