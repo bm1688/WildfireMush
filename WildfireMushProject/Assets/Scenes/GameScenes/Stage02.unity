@@ -1283,6 +1283,10 @@ PrefabInstance:
       propertyPath: _scoreManager
       value: 
       objectReference: {fileID: 1985068552}
+    - target: {fileID: 6544470325943184194, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
+      propertyPath: _sceneName
+      value: Stage03
+      objectReference: {fileID: 0}
     - target: {fileID: 8957888293055148090, guid: 18d437a682bbcf84c8423e9fa0a1c66b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
