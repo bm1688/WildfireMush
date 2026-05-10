@@ -45,7 +45,10 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    
+    public void Resume()
+    {
+        Continue();
+    }
 
     private void PauseGame()
     {
