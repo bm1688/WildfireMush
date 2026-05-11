@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerO2 : MonoBehaviour
 {
-
     public float currentO2 = 100;
     public float maxO2 = 100;
-    //public OxygenTank oxygen;
+
     public Presenter presenter;
 
     [Header("Rates")]
@@ -16,33 +15,29 @@ public class PlayerO2 : MonoBehaviour
     [SerializeField] private float regenRate = 27f;
     [SerializeField] private GameOver GameOverScript;
 
-    private bool inSmoke = false;
+    private int smokeCount = 0;
     private bool death = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         presenter.SetMaxO2(maxO2);
         currentO2 = maxO2;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (inSmoke)
+        if (smokeCount > 0)
         {
             O2Decrease(decreaseRate);
         }
-        //else if (Input.GetKey("space"))
-        //{
-        //    O2Decrease(decreaseRate);
-        //}
         else
         {
             O2Regen(regenRate);
         }
 
-        if (currentO2 > maxO2) currentO2 = maxO2;
+        if (currentO2 > maxO2)
+            currentO2 = maxO2;
+
         if (currentO2 < 0 && death == true)
         {
             death = false;
@@ -52,6 +47,7 @@ public class PlayerO2 : MonoBehaviour
 
         presenter.SetO2(currentO2);
     }
+
     void O2Decrease(float rate)
     {
         currentO2 -= rate * Time.deltaTime;
@@ -66,7 +62,7 @@ public class PlayerO2 : MonoBehaviour
     {
         if (other.CompareTag("Smoke"))
         {
-            inSmoke = true;
+            smokeCount++;
         }
     }
 
@@ -74,9 +70,13 @@ public class PlayerO2 : MonoBehaviour
     {
         if (other.CompareTag("Smoke"))
         {
-            inSmoke = false;
+            smokeCount--;
+
+            if (smokeCount < 0)
+                smokeCount = 0;
         }
     }
+
     public void ApplyO2Tank(O2TankSO tank, bool refill = true)
     {
         if (tank == null) return;
