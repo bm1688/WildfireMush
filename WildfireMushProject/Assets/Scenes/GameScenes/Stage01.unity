@@ -404,10 +404,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7438859610021688721, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8230806904867916539, guid: 04212f6484d254c4787dc623d9cd972a, type: 3}
       propertyPath: GameOverScript
       value: 
@@ -2819,9 +2815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdd6ac1d744c0a43a2dcf9a03ec2cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadoutManager: {fileID: 1884071949}
   scoreManager: {fileID: 1848981583}
-  fuelTankSO: {fileID: 11400000, guid: 2499e061905a93b4e83071b428f492a4, type: 2}
   price: 50
 --- !u!4 &1188617795
 Transform:
@@ -4599,17 +4593,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1884071949 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2842741769942006917, guid: 4771a7b692aa85d43ab0321d12fbfa56, type: 3}
-  m_PrefabInstance: {fileID: 263317818}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6a84dbe339be9479608258db829524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1920583202
 PrefabInstance:
   m_ObjectHideFlags: 0
