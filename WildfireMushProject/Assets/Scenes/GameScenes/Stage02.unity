@@ -687,6 +687,10 @@ PrefabInstance:
       value: Light
       objectReference: {fileID: 0}
     - target: {fileID: 4228952906386371101, guid: 9504c70615c988145a928221d0ce47b1, type: 3}
+      propertyPath: KillPlayer
+      value: 
+      objectReference: {fileID: 1971635128}
+    - target: {fileID: 4228952906386371101, guid: 9504c70615c988145a928221d0ce47b1, type: 3}
       propertyPath: GameOverScript
       value: 
       objectReference: {fileID: 1971635125}
@@ -5045,17 +5049,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1553093658 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2842741769942006917, guid: 4771a7b692aa85d43ab0321d12fbfa56, type: 3}
-  m_PrefabInstance: {fileID: 1417696693}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6a84dbe339be9479608258db829524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1562953573
 GameObject:
   m_ObjectHideFlags: 0
@@ -6452,6 +6445,7 @@ GameObject:
   - component: {fileID: 1971635125}
   - component: {fileID: 1971635124}
   - component: {fileID: 1971635123}
+  - component: {fileID: 1971635128}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6511,9 +6505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdd6ac1d744c0a43a2dcf9a03ec2cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadoutManager: {fileID: 1553093658}
   scoreManager: {fileID: 1985068552}
-  fuelTankSO: {fileID: 11400000, guid: 2499e061905a93b4e83071b428f492a4, type: 2}
   price: 50
 --- !u!4 &1971635127
 Transform:
@@ -6530,6 +6522,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1971635128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971635122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68492d0eecb75ea41865618a5bf6ac7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameOverScript: {fileID: 1971635125}
 --- !u!1 &1972879007
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class RandomPattern : MonoBehaviour
     [SerializeField] private Vector3 velocity;
     private Rigidbody _rb;
     private Collider2D _collider;
-    [SerializeField] private GameOver GameOverScript;
+    [SerializeField] private KillPlayer KillPlayer;
 
     private void Start()
     {
@@ -32,8 +32,7 @@ public class RandomPattern : MonoBehaviour
         }
         else if (collision.gameObject.GetComponent<PlayerMovement>())
         {
-            Debug.Log("Game Over by random");
-            GameOverScript.GameOverScreen();
+           KillPlayer.Kill();
         }
     }
 }

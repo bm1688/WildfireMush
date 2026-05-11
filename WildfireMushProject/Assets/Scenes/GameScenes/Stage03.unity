@@ -1477,6 +1477,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1134337693}
     - target: {fileID: 6841829213150742502, guid: 23a80f0a4a2237d428d6dee1b8b4a84b, type: 3}
+      propertyPath: KillPlayer
+      value: 
+      objectReference: {fileID: 1771554316}
+    - target: {fileID: 6841829213150742502, guid: 23a80f0a4a2237d428d6dee1b8b4a84b, type: 3}
       propertyPath: GameOverScript
       value: 
       objectReference: {fileID: 1675338947}
@@ -5483,6 +5487,10 @@ PrefabInstance:
       value: Light (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4228952906386371101, guid: 9504c70615c988145a928221d0ce47b1, type: 3}
+      propertyPath: KillPlayer
+      value: 
+      objectReference: {fileID: 1771554316}
+    - target: {fileID: 4228952906386371101, guid: 9504c70615c988145a928221d0ce47b1, type: 3}
       propertyPath: GameOverScript
       value: 
       objectReference: {fileID: 1675338947}
@@ -6382,6 +6390,10 @@ PrefabInstance:
       value: Light
       objectReference: {fileID: 0}
     - target: {fileID: 4228952906386371101, guid: 9504c70615c988145a928221d0ce47b1, type: 3}
+      propertyPath: KillPlayer
+      value: 
+      objectReference: {fileID: 1771554316}
+    - target: {fileID: 4228952906386371101, guid: 9504c70615c988145a928221d0ce47b1, type: 3}
       propertyPath: GameOverScript
       value: 
       objectReference: {fileID: 1675338947}
@@ -6474,9 +6486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdd6ac1d744c0a43a2dcf9a03ec2cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadoutManager: {fileID: 1897120325}
   scoreManager: {fileID: 1738623518}
-  fuelTankSO: {fileID: 11400000, guid: 2499e061905a93b4e83071b428f492a4, type: 2}
   price: 50
 --- !u!4 &1675338949
 Transform:
@@ -6766,6 +6776,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1771554315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771554317}
+  - component: {fileID: 1771554316}
+  m_Layer: 0
+  m_Name: KillSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1771554316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771554315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68492d0eecb75ea41865618a5bf6ac7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameOverScript: {fileID: 1675338947}
+--- !u!4 &1771554317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771554315}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1667955, y: 2.291995, z: -0.11808704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1783632768
 GameObject:
   m_ObjectHideFlags: 0
@@ -7427,17 +7482,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4771a7b692aa85d43ab0321d12fbfa56, type: 3}
---- !u!114 &1897120325 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2842741769942006917, guid: 4771a7b692aa85d43ab0321d12fbfa56, type: 3}
-  m_PrefabInstance: {fileID: 1897120324}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6a84dbe339be9479608258db829524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1915634258
 GameObject:
   m_ObjectHideFlags: 0
@@ -7977,3 +8021,4 @@ SceneRoots:
   - {fileID: 1385946784}
   - {fileID: 368094552}
   - {fileID: 1863619719}
+  - {fileID: 1771554317}

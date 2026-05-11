@@ -8,7 +8,7 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private Transform player; 
     [SerializeField] private float speed = 3f; 
     private Collider2D _collider;
-    [SerializeField] private GameOver GameOverScript;
+    [SerializeField] private KillPlayer KillPlayer;
     private void Start()
     {
         _collider = GetComponent<Collider2D>();
@@ -21,20 +21,15 @@ public class FollowPlayer : MonoBehaviour
             Vector3 direction = (player.position - transform.position).normalized;
             transform.Translate(direction * speed * Time.deltaTime, Space.World);           
         }
-       
+ 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerMovement>())
-        {
-            Debug.Log("Game Over by follow");
-            GameOverScript.GameOverScreen();
+        { 
+            KillPlayer.Kill();
         }
     }
-
-
-
-
 
 }
